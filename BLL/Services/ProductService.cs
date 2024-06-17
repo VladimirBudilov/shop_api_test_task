@@ -35,6 +35,5 @@ public class ProductService(ShopDbContext context, IProductValidator validator) 
         context.Products.Remove(product);
         await context.SaveChangesAsync();
         return product;
-
     }
 }

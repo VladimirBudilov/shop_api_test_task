@@ -25,7 +25,8 @@ builder.Services.AddAutoMapper(typeof(AutomapperProfile));
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pryaniky Shop API", Version = "v1" });
+     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pryaniky Shop API" });
+
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
@@ -44,12 +45,18 @@ app.UseExceptionHandler();
 app.UseAuthorization();
 app.MapControllers();
 
-app.UseSwagger();
+app.UseSwagger(c =>
+{
+    c.RouteTemplate = "swagger/{documentName}/swagger.json";
+});
+
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pryaniky Shop API V1");
+    c.SwaggerEndpoint("v1/swagger.json", "Pryaniky Shop API");
     c.RoutePrefix = "swagger";
 });
+
+app.UseAuthorization();
 
 // Seed the database
 using (var scope = app.Services.CreateScope())
