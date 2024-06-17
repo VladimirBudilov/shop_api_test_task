@@ -29,6 +29,7 @@ builder.Services.AddSwaggerGen(c =>
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
+    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 });
 builder.Services.AddEndpointsApiExplorer();
 
@@ -47,6 +48,7 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pryaniky Shop API V1");
+    c.RoutePrefix = "swagger";
 });
 
 // Seed the database
