@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Orders_API</name>
+    </assembly>
+    <members>
+        <member name="T:Orders_API.Controllers.OrdersController">
+            <summary>
+            Endpoints for managing orders.
+            </summary>
+        </member>
+        <member name="M:Orders_API.Controllers.OrdersController.#ctor(BLL.Services.Interfaces.IOrderService,AutoMapper.IMapper)">
+            <summary>
+            Endpoints for managing orders.
+            </summary>
+        </member>
+        <member name="M:Orders_API.Controllers.OrdersController.GetOrders">
+            <summary>
+            Gets all orders.
+            </summary>
+            <returns>A list of orders.</returns>
+            <response code="200">Returns the list of orders.</response>
+        </member>
+        <member name="M:Orders_API.Controllers.OrdersController.GetOrder(System.Guid)">
+            <summary>
+            Gets an order by its ID.
+            </summary>
+            <param name="id">The ID of the order.</param>
+            <returns>The order with the given ID.</returns>
+            <response code="200">Returns the order with the given ID.</response>
+            <response code="400">If the order is not found.</response>
+        </member>
+        <member name="M:Orders_API.Controllers.OrdersController.CreateOrder(Orders_API.DTOs.Requests.OrderRequestDto)">
+            <summary>
+            Creates a new order. Assign Array of valid ProductId's.
+            </summary>
+            <param name="order">The order to create.</param>
+            <param name="orderRequestDto"></param>
+            <returns>The created order.</returns>
+            <response code="200">Returns the created order.</response>
+            <response code="400">If the order already exist.</response>
+        </member>
+        <member name="M:Orders_API.Controllers.OrdersController.DeleteOrder(System.Guid)">
+            <summary>
+            Deletes an order by its ID.
+            </summary>
+            <param name="id">The ID of the order to delete.</param>
+            <returns>The deleted order.</returns>
+            <response code="200">Returns the deleted order.</response>
+            <response code="400">If the order is not found.</response>
+        </member>
+        <member name="T:Orders_API.Controllers.ProductsController">
+            <summary>
+            Endpoints for managing products.
+            </summary>
+        </member>
+        <member name="M:Orders_API.Controllers.ProductsController.#ctor(BLL.Services.Interfaces.IProductService,AutoMapper.IMapper)">
+            <summary>
+            Endpoints for managing products.
+            </summary>
+        </member>
+        <member name="M:Orders_API.Controllers.ProductsController.GetProducts">
+            <summary>
+            Gets all products.
+            </summary>
+            <returns>A list of products.</returns>
+            <response code="200">Returns the list of products.</response>
+        </member>
+        <member name="M:Orders_API.Controllers.ProductsController.GetProduct(System.Guid)">
+            <summary>
+            Gets an product by its ID.
+            </summary>
+            <param name="id">The ID of the product.</param>
+            <returns>The product with the given ID.</returns>
+            <response code="200">Returns the product with the given ID.</response>
+            <response code="400">If the product is not found.</response>
+        </member>
+        <member name="M:Orders_API.Controllers.ProductsController.CreateProduct(Orders_API.DTOs.Requests.ProductRequestDto)">
+            <summary>
+            Creates a new product. Assign Title and Price to the product.
+            </summary>
+            <param name="product">The product to create.</param>
+            <param name="productRequestDto"></param>
+            <returns>The created product.</returns>
+            <response code="200">Returns the created product.</response>
+            <response code="400">If the product already exist.</response>
+        </member>
+        <member name="M:Orders_API.Controllers.ProductsController.DeleteProduct(System.Guid)">
+            <summary>
+            Deletes a product by its ID.
+            </summary>
+            <param name="id">The id of the product to delete.</param>
+            <returns>The deleted product.</returns>
+            <response code="200">Returns the deleted product.</response>
+            <response code="400">If the product is not found.</response>
+        </member>
+    </members>
+</doc>
